@@ -45,23 +45,23 @@ public class RadioButtonAndCheck {
 
         for (int i = 0; i < radioButtons.size(); i++) {
 //            checked = radioButtons.get(i).isSelected();
-            radioButtons.get(i + 1).click();
+            radioButtons.get(i+1).click();
             Thread.sleep(2000);
             break;
         }
 
         driver.findElement(By.id("tab-car-tab")).click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         driver.findElement(By.xpath(".//*[@id='car-options-toggle']")).click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         List<WebElement> checkBoxButtonsCar = driver.findElements(By.xpath("//*[@type='checkbox']"));
         System.out.println("##### " + checkBoxButtonsCar.size());
-        Thread.sleep(4000);
+        Thread.sleep(2000);
 
         for (int i=0;i<checkBoxButtonsCar.size(); i++){
             checkBoxButtonsCar.get(i).click();
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }
     }
 
