@@ -58,6 +58,37 @@ public class Exercises {
         Thread.sleep(2000);
     }
 
+    @Test
+    public void doTestMultiselect() throws Exception {
+        driver.get(baseUrl2);
+
+        Select sel1 = new Select(driver.findElement(By.name("toppings")));
+        // let's print the values
+        List<WebElement> options1 = sel1.getOptions();
+
+        for (int i=0;i<options1.size();i++){
+            System.out.println("#### options1 : " + options1.get(i).getText());
+        }
+
+        sel1.selectByValue("onions");
+        sel1.selectByIndex(0);
+        sel1.selectByIndex(1);
+
+        sel1.deselectAll();
+
+        sel1.selectByIndex(3);
+        sel1.selectByIndex(4);
+
+        sel1.deselectByIndex(3);
+        sel1.selectByValue("mushrooms");
+        sel1.deselectByValue("olives");
+
+        Thread.sleep(2000);
+
+        driver.findElement(By.xpath(".//*[@id='content']/tbody/tr/td/table[1]/tbody/tr[2]/td[2]/form/p[2]/input")).click();
+
+    }
+
 
     @After
     public void closeTest() throws Exception {
