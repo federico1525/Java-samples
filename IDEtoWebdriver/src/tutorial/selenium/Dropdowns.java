@@ -52,26 +52,27 @@ public class Dropdowns {
         sel2.selectByIndex(2);
     }
 
-//    @Test
-//    public void testMultiSelect() throws Exception {
-//        driver.get(baseUrl2);
-//        Select sel = new Select(driver.findElement(By.name("toppings")));
-//        sel.selectByValue("onions");
-//        Thread.sleep(2000);
-//
-//        sel.deselectByValue("onions");
-//        Thread.sleep(2000);
-//
-//        sel.selectByIndex(3);
-//        sel.selectByValue("olives");
-//
-//        Thread.sleep(2000);
-//        sel.deselectAll();
-//
-//    }
+    @Test
+    public void testMultiSelect() throws InterruptedException {
+        driver.get(baseUrl2);
+        Select sel = new Select(driver.findElement(By.name("toppings")));
+        sel.selectByValue("onions");
+        Thread.sleep(2000);
+
+        sel.deselectByValue("onions");
+        Thread.sleep(2000);
+
+        sel.selectByIndex(3);
+        sel.selectByValue("olives");
+
+        Thread.sleep(2000);
+        sel.deselectAll();
+
+    }
 
     @After
     public void tearDown() throws Exception {
-        Thread.sleep(6000);
+        Thread.sleep(3000);
+        driver.quit();
     }
 }
