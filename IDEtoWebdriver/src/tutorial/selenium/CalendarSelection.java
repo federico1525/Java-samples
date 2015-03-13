@@ -41,17 +41,19 @@ public class CalendarSelection {
 
         List<WebElement> days = calDays.findElements(By.tagName("li"));
 
-        for (WebElement giorno : days){
+        for (WebElement giorno : days) {
 //            System.out.println(giorno.getText());
-            if (giorno.getText().equals("30")){
+            if (giorno.getText().equals("30")) {
 //                Thread.sleep(1000);
                 System.out.println("######");
                 giorno.findElement(By.linkText("30")).click();
                 break;
             }
         }
-
     }
+
+
+
 
     @After
     public void afterTest(){
@@ -60,3 +62,4 @@ public class CalendarSelection {
     }
 
 }
+
