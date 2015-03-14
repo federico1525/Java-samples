@@ -82,7 +82,7 @@ public class CalendarSelection {
 
     @After
     public void afterTest(){
-//        driver.quit();
+        driver.quit();
 
     }
 
