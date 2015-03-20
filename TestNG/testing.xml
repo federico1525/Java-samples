@@ -1,0 +1,13 @@
+<suite name="TestSuite">
+    <test name="ExpediaSearchTest" preserve-order="true">
+        <classes>
+            <class name="tutorial.selenium.TestNG">
+                <methods>
+                    <include name="testMethod"/>
+                    <include name="fillAdvancedInfo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

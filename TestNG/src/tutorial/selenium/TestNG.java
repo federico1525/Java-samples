@@ -34,13 +34,22 @@ public class TestNG {
     }
 
     @Test
-    public void testMethod() {
+    public void testMethod() throws Exception {
         driver.get(baseUrl);
         SearchPage.navigateToFlightsTab(driver);
         SearchPage.fillOriginTextBox(driver, "New York");
         SearchPage.fillDestinationTextBox(driver, "Chicago");
         SearchPage.fillDepartureDateTextBox(driver, "12/25/2014");
         SearchPage.fillReturnDateTextBox(driver, "12/31/2014");
+        Thread.sleep(3000);
+    }
+
+    @Test
+    public void fillAdvancedInfo(){
+        SearchPage.clickOnAdvancedLink(driver);
+        SearchPage.clickNonStopCheckBox(driver);
+        SearchPage.selectFlightClass(driver, "first");
+
     }
 
     @AfterMethod

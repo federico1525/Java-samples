@@ -1,7 +1,10 @@
 package page.classes;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class SearchPage {
     public static WebElement element = null;
@@ -122,5 +125,32 @@ public class SearchPage {
         element = driver.findElement(By.id("tab-flight-tab"));
         element.click();
         log.info("Navigate to flights tab");
+    }
+    /**
+     * Click on Advanced Options link
+     * @param driver
+     */
+    public static void clickOnAdvancedLink(WebDriver driver) {
+        element = driver.findElement(By.id("advanced-options"));
+        element.click();
+        log.info("Clicked on Advanced Options link");
+    }
+    /**
+     * Click non-stop check box
+     * @param driver
+     */
+    public static void clickNonStopCheckBox(WebDriver driver) {
+        element = driver.findElement(By.id("advanced-flight-nonstop"));
+        element.click();
+        log.info("Clicked non-stop check box");
+    }
+    /**
+     * Select flight class
+     * @param driver
+     */
+    public static void selectFlightClass(WebDriver driver, String flightClass) {
+        Select options = new Select(driver.findElement(By.id("flight-advanced-preferred-class")));
+        options.selectByValue(flightClass);
+        log.info("Select flight class as " + flightClass);
     }
 }
