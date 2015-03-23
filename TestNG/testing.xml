@@ -4,7 +4,6 @@
             <class name="tutorial.selenium.TestNG">
                 <methods>
                     <include name="testMethod"/>
-                    <include name="fillAdvancedInfo"/>
                 </methods>
             </class>
         </classes>
