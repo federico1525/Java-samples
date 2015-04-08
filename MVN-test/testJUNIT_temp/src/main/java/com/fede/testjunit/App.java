@@ -20,8 +20,8 @@ public class App {
         return upperStr;
     }
 
-    public static int div(int a, int b) {
 
+    public static int div(int a, int b) {
         if (b == 0)
             throw new IllegalArgumentException("idiota b non può essere 0");
 

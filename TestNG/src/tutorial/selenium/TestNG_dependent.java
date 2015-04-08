@@ -4,52 +4,48 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.classes.SearchPage;
-import java.lang.*;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestNG {
-
+public class TestNG_dependent {
     private WebDriver driver;
     private String baseUrl;
+
     static Logger log = Logger.getLogger(TestNG.class);
 
-    @BeforeMethod
-    public void beforeMethod() {
+    @BeforeClass
+    public void beforeClass(){
         driver = new FirefoxDriver();
         baseUrl = "https://www.expedia.com/";
 
         // Maximize the browser's window
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         PropertyConfigurator.configure("log4j.properties");
-//        log = Logger.getLogger(TestNG.class);
+        driver.get(baseUrl);
     }
 
     @Test
-    public void testMethod() throws Exception {
-        driver.get(baseUrl);
+    public void searchFlights() throws Exception {
         SearchPage.navigateToFlightsTab(driver);
         SearchPage.fillOriginTextBox(driver, "New York");
         SearchPage.fillDestinationTextBox(driver, "Chicago");
-        SearchPage.fillDepartureDateTextBox(driver, "12/25/2014");
-        SearchPage.fillReturnDateTextBox(driver, "12/31/2014");
-        Thread.sleep(3000);
+        SearchPage.fillDepartureDateTextBox(driver, "10/28/2015");
+        SearchPage.fillReturnDateTextBox(driver, "10/31/2015");
+        SearchPage.clickOnSearchButton(driver);
     }
 
-    @Test
-    public void fillAdvancedInfo(){
-        SearchPage.clickOnAdvancedLink(driver);
-        SearchPage.clickNonStopCheckBox(driver);
-        SearchPage.selectFlightClass(driver, "first");
-
+    @Test(dependsOnMethods = {"searchFlights"})
+    public void selectMorningFlight(){
+        SearchPage.morningFlightBox(driver);
     }
 
-    @AfterMethod
-    public void afterMethod() {
+    @AfterTest
+    public void afterTest(){
+
     }
 }

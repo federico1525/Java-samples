@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+
 public class SearchPage {
     public static WebElement element = null;
     static Logger log = Logger.getLogger(SearchPage.class);
@@ -15,6 +16,8 @@ public class SearchPage {
      * @param driver
      * @return
      */
+
+
     public static WebElement originTextBox(WebDriver driver) {
         element = driver.findElement(By.id("flight-origin"));
         log.info("Origin text box element found");
@@ -46,7 +49,7 @@ public class SearchPage {
     /**
      * Fill destination city in destination text box
      * @param driver
-     * @param origin
+     * @param destination
      */
     public static void fillDestinationTextBox(WebDriver driver, String destination) {
         element = destinationTextBox(driver);
@@ -121,7 +124,7 @@ public class SearchPage {
      * @param driver
      */
     public static void navigateToFlightsTab(WebDriver driver) {
-        driver.findElement(By.id("header-history")).click();
+//        driver.findElement(By.id("header-history")).click();
         element = driver.findElement(By.id("tab-flight-tab"));
         element.click();
         log.info("Navigate to flights tab");
@@ -153,4 +156,16 @@ public class SearchPage {
         options.selectByValue(flightClass);
         log.info("Select flight class as " + flightClass);
     }
+
+
+    /**
+     * Check the morning flights
+     * @param driver
+     */
+    public static void morningFlightBox(WebDriver driver) {
+        element = driver.findElement(By.id("todRowContainer_MORNING"));
+        element.click();
+        log.info("clicked on the morning flights");
+    }
+
 }

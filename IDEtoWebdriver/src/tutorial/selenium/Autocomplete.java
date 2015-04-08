@@ -32,6 +32,7 @@ public class Autocomplete {
         String searchingText = "Newark, NJ - EWR";
         String partialText = "New York";
 
+
         WebElement text = driver.findElement(By.id("air-city-departure"));
         //div[@class='overlay']//div[@class='js-overlay-container overlay--container']
         text.sendKeys(partialText);
